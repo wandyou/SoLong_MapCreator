@@ -6,7 +6,7 @@
 /*   By: nathanlafarge <nathanlafarge@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 23:46:27 by nathanlafar       #+#    #+#             */
-/*   Updated: 2021/07/25 23:20:40 by nathanlafar      ###   ########.fr       */
+/*   Updated: 2021/07/25 23:28:13 by nathanlafar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ int main(int argc, char **argv)
         player = 1;
         exit = 1;
         strcat(file_name, "maps/map");
-        strcat(file_name, ft_itoa(z));
+        strcat(file_name, ft_itoa(z+1));
         strcat(file_name, ".ber");
         printf("%s\n", file_name);
         fp = fopen (file_name , "w+");
-        longueur = generate_rand(0, atoi(argv[2]));
-        largeur = generate_rand(0, atoi(argv[3]));
+        longueur = generate_rand(5, atoi(argv[2]));
+        largeur = generate_rand(5, atoi(argv[3]));
         enemy = atoi(argv[4]);
         char map[longueur][largeur];
 
@@ -139,39 +139,6 @@ int main(int argc, char **argv)
             }
         }
 
-        while (wall > 0)
-        {
-            rand_x = generate_rand(1, largeur-2);
-            rand_y = generate_rand(1, longueur-2);
-            if (map[rand_y][rand_x] == '0')
-            {
-                map[rand_y][rand_x] = '1';
-                wall--;
-            }
-        }
-
-        while (collectible > 0)
-        {
-            rand_x = generate_rand(1, largeur-2);
-            rand_y = generate_rand(1, longueur-2);
-            if (map[rand_y][rand_x] == '0')
-            {
-                map[rand_y][rand_x] = 'C';
-                collectible--;
-            }
-        }
-
-        while (enemy > 0)
-        {
-            rand_x = generate_rand(1, largeur-2);
-            rand_y = generate_rand(1, longueur-2);
-            if (map[rand_y][rand_x] == '0')
-            {
-                map[rand_y][rand_x] = 'M';
-                enemy--;
-            }
-        }
-
         while (player > 0)
         {
             rand_x = generate_rand(1, largeur-2);
@@ -192,6 +159,33 @@ int main(int argc, char **argv)
                 map[rand_y][rand_x] = 'E';
                 exit--;
             }
+        }
+
+        while (collectible > 0)
+        {
+            rand_x = generate_rand(1, largeur-2);
+            rand_y = generate_rand(1, longueur-2);
+            if (map[rand_y][rand_x] == '0')
+                map[rand_y][rand_x] = 'C';
+            collectible--;
+        }
+
+        while (enemy > 0)
+        {
+            rand_x = generate_rand(1, largeur-2);
+            rand_y = generate_rand(1, longueur-2);
+            if (map[rand_y][rand_x] == '0')
+                map[rand_y][rand_x] = 'M';
+            enemy--;
+        }
+
+        while (wall > 0)
+        {
+            rand_x = generate_rand(1, largeur-2);
+            rand_y = generate_rand(1, longueur-2);
+            if (map[rand_y][rand_x] == '0')
+                map[rand_y][rand_x] = '1';
+            wall--;
         }
 
         for(y = 0; y < longueur; y++)
