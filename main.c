@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nathanlafarge <nathanlafarge@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 23:46:27 by nathanlafar       #+#    #+#             */
-/*   Updated: 2021/07/25 01:05:08 by nathanlafar      ###   ########.fr       */
+/*   Updated: 2021/07/25 23:20:40 by nathanlafar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ int main(int argc, char **argv)
         strcat(file_name, ".ber");
         printf("%s\n", file_name);
         fp = fopen (file_name , "w+");
-        longueur = generate_rand((atoi(argv[2]) / 2), atoi(argv[2]));
-        largeur = generate_rand((atoi(argv[3]) / 2), atoi(argv[3]));
+        longueur = generate_rand(0, atoi(argv[2]));
+        largeur = generate_rand(0, atoi(argv[3]));
         enemy = atoi(argv[4]);
         char map[longueur][largeur];
 
